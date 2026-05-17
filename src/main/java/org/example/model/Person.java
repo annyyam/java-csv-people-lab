@@ -51,6 +51,29 @@ public class Person {
     }
 
     @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        if (!(object instanceof Person person)) {
+            return false;
+        }
+
+        return id == person.id
+                && salary == person.salary
+                && Objects.equals(name, person.name)
+                && gender == person.gender
+                && Objects.equals(birthDate, person.birthDate)
+                && Objects.equals(department, person.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, gender, birthDate, department, salary);
+    }
+
+    @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
